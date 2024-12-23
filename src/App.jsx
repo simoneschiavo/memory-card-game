@@ -36,18 +36,43 @@ function App() {
     setIsOver((prevIsOver) => !prevIsOver);
   };
 
+  const handleLevelSection = () => {
+    setIsOpen(true);
+  };
+
+  const resetLevel = () => {
+    setLevel(null);
+  }
+
+  const resetIsOver = () => {
+    setIsOver(false);
+  }
+
   return (
     <>
       <Header score={score} record={record} />
       <section className={isOpen ? "level-selector" : "level-selector close"}>
         <h2>Which level do you want to choose?</h2>
         <div className="row-container levels">
-          <ButtonSelector levelSelected="easy" handleLevel={handleLevel} />
-          <ButtonSelector levelSelected="medium" handleLevel={handleLevel} />
-          <ButtonSelector levelSelected="hard" handleLevel={handleLevel} />
+          <ButtonSelector
+            levelSelected="easy"
+            handleLevel={handleLevel}
+            resetIsOver={resetIsOver}
+          />
+          <ButtonSelector
+            levelSelected="medium"
+            handleLevel={handleLevel}
+            resetIsOver={resetIsOver}
+          />
+          <ButtonSelector
+            levelSelected="hard"
+            handleLevel={handleLevel}
+            resetIsOver={resetIsOver}
+          />
           <ButtonSelector
             levelSelected="impossible"
             handleLevel={handleLevel}
+            resetIsOver={resetIsOver}
           />
         </div>
       </section>
@@ -58,13 +83,15 @@ function App() {
           handleIsOver={handleIsOver}
         />
       )}
-      {isOver && (
+      {level && isOver && (
         <NewGame
           score={score}
           record={record}
           handleRecord={handleRecord}
           resetScore={resetScore}
           handleIsOver={handleIsOver}
+          handleLevelSection={handleLevelSection}
+          resetLevel={resetLevel}
         />
       )}
     </>
