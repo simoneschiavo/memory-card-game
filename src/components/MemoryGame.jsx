@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { PawPrint } from "lucide-react";
 
 export default function MemoryGame({ level, increaseScore, handleIsOver }) {
   const [images, setImages] = useState([]);
@@ -73,7 +73,10 @@ export default function MemoryGame({ level, increaseScore, handleIsOver }) {
           ))}
         </div>
       ) : (
-        <p>Loading...</p>
+        <section className="loading-state">
+          <PawPrint className="paw-print" size={48} />
+          <p>Loading...</p>
+        </section>
       )}
     </section>
   );
