@@ -10,6 +10,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(true);
   const [score, setScore] = useState(0);
   const [record, setRecord] = useState(0);
+  const [isOver, setIsOver] = useState(false);
 
   const handleLevel = (e) => {
     setLevel(e.target.id);
@@ -30,6 +31,10 @@ function App() {
     }
   };
 
+  const handleIsOver = () => {
+    setIsOver(true);
+  };
+
   return (
     <>
       <Header score={score} record={record} />
@@ -45,7 +50,7 @@ function App() {
           />
         </div>
       </section>
-      {level && <MemoryGame level={level} />}
+      {level && <MemoryGame level={level} increaseScore={increaseScore} handleIsOver={handleIsOver} />}
     </>
   );
 }

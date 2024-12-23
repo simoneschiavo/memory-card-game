@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-export default function MemoryGame({ level }) {
+export default function MemoryGame({ level, increaseScore, handleIsOver }) {
   const [images, setImages] = useState([]);
-    const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
 
   let numberOfImages = 6;
 
@@ -42,7 +42,13 @@ export default function MemoryGame({ level }) {
       {error && <p>Error: {error}</p>}
       {images.length === numberOfImages ? (
         images.map((image) => (
-          <Card imageId={image.id} imageUrl={image.url} />
+          <Card
+            key={image.id}
+            imageId={image.id}
+            imageUrl={image.url}
+            increaseScore={increaseScore}
+            handleIsOver={handleIsOver}
+          />
         ))
       ) : (
         <p>Loading...</p>
@@ -51,12 +57,21 @@ export default function MemoryGame({ level }) {
   );
 }
 
-function Card({ imageId, imageUrl }) {
-    const [isSelected, setIsSelected] = useState(false);
-    
-    return (
-        <button key={imageId} className="card">
-            <img src={imageUrl} alt="Dog" />
-        </button>
-    )
+function Card({ imageId, imageUrl, increaseScore, handleIsOver }) {
+  const [isSelected, setIsSelected] = useState(false);
+
+  const handleScore = () => {
+    setIsSelected(true);
+    increaseScore();
+  };
+
+  const handleClick = () => {
+    !isSelected ? handleScore() : handleIsOver();
+  };
+
+  return (
+    <button key={imageId} className="card" onClick={() => handleClick()}>
+      <img src={imageUrl} alt="Dog" />
+    </button>
+  );
 }
