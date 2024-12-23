@@ -52,7 +52,7 @@ function App() {
     <>
       <Header score={score} record={record} />
       <section className={isOpen ? "level-selector" : "level-selector close"}>
-        <h2>Which level do you want to choose?</h2>
+        <h2 className="section-title">Which level do you want to choose?</h2>
         <div className="row-container levels">
           <ButtonSelector
             levelSelected="easy"

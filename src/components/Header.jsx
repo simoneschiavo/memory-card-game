@@ -6,7 +6,7 @@ export default function Header({ score, record }) {
       <header className="navbar">
         <div className="title-container">
           <h1 className="title">MemoryDoggo</h1>
-          <PawPrint className="paw-print" />
+          <PawPrint className="paw-print" size={18} />
         </div>
         <div className="scores-container">
           <p className="score">Current score: {score}</p>

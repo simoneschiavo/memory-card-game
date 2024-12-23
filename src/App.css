@@ -1,19 +1,40 @@
 :root {
   --brown: #ad4c15;
   --light-grey: #eff1f5;
+  --light-orange: #ffead1;
+  --border-radius: 25px;
+  --light-green: #dbeedb;
+  --light-blue: #d0e4ff;
+  --light-pink: #fee4ea;
+  --green: #249a24;
+  --blue: #0d60c7;
+  --orange: #ff9225;
+  --pink: #fc6a8e;
 }
 
 #root {
-  min-width: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 4rem;
+}
+
+/* General */
+button {
+  transition: all 500ms ease;
+}
+
+button:hover {
+  cursor: pointer;
+  transition: all 500ms ease;
 }
 
 /* Header */
 .navbar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   padding: 2rem;
   background-color: var(--light-grey);
 }
@@ -24,7 +45,7 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
@@ -34,5 +55,77 @@
 }
 
 .scores-container {
-  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+/* Level Selector */
+.level-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-self: center;
+  margin: auto;
+  padding: 5rem;
+  background-color: var(--light-grey);
+  border-radius: var(--border-radius);
+}
+
+.close {
+  display: none;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.levels {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button.easy,
+button.medium,
+button.hard,
+button.impossible {
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+}
+
+button.easy {
+  background-color: var(--light-green);
+  border: 1px solid var(--light-green);
+}
+
+button.easy:hover {
+  border: 1px solid var(--green);
+}
+
+button.medium {
+  background-color: var(--light-blue);
+  border: 1px solid var(--light-blue);
+}
+
+button.medium:hover {
+  border: 1px solid var(--blue);
+}
+
+button.hard {
+  background-color: var(--light-orange);
+  border: 1px solid var(--light-orange);
+}
+
+button.hard:hover {
+  border: 1px solid var(--orange);
+}
+
+button.impossible {
+  background-color: var(--light-pink);
+  border: 1px solid var(--light-pink);
+}
+
+button.impossible:hover {
+  border: 1px solid var(--pink);
 }
