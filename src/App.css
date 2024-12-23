@@ -10,13 +10,18 @@
   --blue: #0d60c7;
   --orange: #ff9225;
   --pink: #fc6a8e;
+  --light-brown: #fff7ee;
+  --grey: #b1b4bf;
+  --black: #1e1e1e;
+  --light-black: #8c909b;
 }
 
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 2rem;
+  color: var(--black)
 }
 
 /* General */
@@ -36,7 +41,7 @@ button:hover {
   justify-content: space-between;
   gap: 1rem;
   padding: 2rem;
-  background-color: var(--light-grey);
+  background-color: var(--light-brown);
 }
 
 .navbar > div {
@@ -128,4 +133,37 @@ button.impossible {
 
 button.impossible:hover {
   border: 1px solid var(--pink);
+}
+
+/* Memory Game */
+.memory-game {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.card {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  height: 300px;
+  background-color: var(--light-grey);
+  border: 1px solid var(--light-grey);
+}
+
+.card:hover {
+  border: 1px solid var(--grey);
+}
+
+.card > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius);
 }

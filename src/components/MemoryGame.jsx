@@ -57,23 +57,25 @@ export default function MemoryGame({ level, increaseScore, handleIsOver }) {
   };
 
   return (
-    <>
+    <section className="memory-game">
       {error && <p>Error: {error}</p>}
       {images.length === numberOfImages ? (
-        images.map((image) => (
-          <Card
-            key={image.id}
-            imageId={image.id}
-            imageUrl={image.url}
-            increaseScore={increaseScore}
-            handleIsOver={handleIsOver}
-            handleShuffle={handleShuffle}
-          />
-        ))
+        <div className="cards-container">
+          {images.map((image) => (
+            <Card
+              key={image.id}
+              imageId={image.id}
+              imageUrl={image.url}
+              increaseScore={increaseScore}
+              handleIsOver={handleIsOver}
+              handleShuffle={handleShuffle}
+            />
+          ))}
+        </div>
       ) : (
         <p>Loading...</p>
       )}
-    </>
+    </section>
   );
 }
 
