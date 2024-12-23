@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import ButtonSelector from "./components/ButtonSelector";
+import MemoryGame from "./components/MemoryGame";
 
 function App() {
   const [level, setLevel] = useState(null);
@@ -11,7 +12,7 @@ function App() {
   const [record, setRecord] = useState(0);
 
   const handleLevel = (e) => {
-    setLevel(e.target.value.toLowerCase());
+    setLevel(e.target.id);
     setIsOpen(false);
   };
 
@@ -31,10 +32,7 @@ function App() {
 
   return (
     <>
-      <Header
-        score={score}
-        record={record}
-      />
+      <Header score={score} record={record} />
       <section className={isOpen ? "level-selector" : "level-selector close"}>
         <h2>Which level do you want to choose?</h2>
         <div className="row-container levels">
@@ -47,7 +45,7 @@ function App() {
           />
         </div>
       </section>
-      {level === "easy" && <MemoryGame />}
+      {level && <MemoryGame />}
     </>
   );
 }

@@ -5,7 +5,7 @@ export default function ButtonSelector({ levelSelected, handleLevel }) {
   };
 
   return (
-    <button className={levelSelected} onClick={handleLevel}>
+    <button className={levelSelected} id={levelSelected} onClick={handleLevel}>
       {capitalizeFirstWord(levelSelected)}
     </button>
   );
