@@ -37,6 +37,23 @@ export default function MemoryGame({ level, increaseScore, handleIsOver }) {
     fetchImages();
   }, [level]);
 
+  const shuffleCards = (cards) => {
+    const shuffled = [...cards];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[randomIndex]] = [
+        shuffled[randomIndex],
+        shuffled[i],
+      ];
+    }
+    return shuffled;
+  };
+
+  const handleShuffle = () => {
+    const shuffledImages = shuffleCards(images);
+    setImages(shuffledImages); // This way triggers re-render
+  };
+
   return (
     <>
       {error && <p>Error: {error}</p>}
@@ -48,6 +65,7 @@ export default function MemoryGame({ level, increaseScore, handleIsOver }) {
             imageUrl={image.url}
             increaseScore={increaseScore}
             handleIsOver={handleIsOver}
+            handleShuffle={handleShuffle}
           />
         ))
       ) : (
@@ -57,12 +75,19 @@ export default function MemoryGame({ level, increaseScore, handleIsOver }) {
   );
 }
 
-function Card({ imageId, imageUrl, increaseScore, handleIsOver }) {
+function Card({
+  imageId,
+  imageUrl,
+  increaseScore,
+  handleIsOver,
+  handleShuffle,
+}) {
   const [isSelected, setIsSelected] = useState(false);
 
   const handleScore = () => {
     setIsSelected(true);
     increaseScore();
+    handleShuffle();
   };
 
   const handleClick = () => {
