@@ -37,7 +37,7 @@ export default function MemoryGame({ level, increaseScore, handleIsOver }) {
     };
 
     fetchImages();
-  }, [level]);
+  }, []);
 
   const shuffleCards = (cards) => {
     const shuffled = [...cards];

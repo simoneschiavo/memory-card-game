@@ -26,17 +26,25 @@ export default function NewGame({
 
   return (
     <section className="new-game">
-      <h2>Good boy! 🐶</h2>
+      <div className="titles-container">
+        <h2 className="section-title">Game over!</h2>
+        <p className="subtitle">But you're still a good boy 🐶</p>
+      </div>
       <div className="scores-container">
         <p className="score">Your score: {score}</p>
         <p className="record">Your record: {record}</p>
       </div>
-      <button className="new-game" onClick={() => handleNewGame()}>
-        New game
-      </button>
-      <button className="change-level" onClick={() => handleChangeLevel()}>
-        Change difficulty
-      </button>
+      <div className="buttons-container">
+        <button
+          className="change-level-button"
+          onClick={() => handleChangeLevel()}
+        >
+          Change difficulty
+        </button>
+        <button className="new-game-button" onClick={() => handleNewGame()}>
+          Play again
+        </button>
+      </div>
     </section>
   );
 }
