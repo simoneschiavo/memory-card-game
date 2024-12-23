@@ -7,7 +7,9 @@ export default [
   {
     files: ["**/*.{js,mjs,cjs,jsx}"],
     languageOptions: {
-      globals: globals.browser,
+      globals: {
+        ...globals.browser, // Include all browser globals
+      },
       ecmaVersion: "latest", // Use the latest ECMAScript features
       sourceType: "module", // Enable ES modules
     },
@@ -17,7 +19,6 @@ export default [
       },
     },
     rules: {
-      // Add or override rules here
       "react/react-in-jsx-scope": "off", // Disable React-in-JSX-Scope rule
     },
   },

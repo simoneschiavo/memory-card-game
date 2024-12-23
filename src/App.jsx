@@ -14,13 +14,16 @@ function App() {
 
   return (
     <>
-      <section>
+      <section className={isOpen ? "level-selector" : "level-selector close"}>
         <h1>Which level do you want to choose?</h1>
         <div className="row-container levels">
           <ButtonSelector levelSelected="easy" handleLevel={handleLevel} />
           <ButtonSelector levelSelected="medium" handleLevel={handleLevel} />
           <ButtonSelector levelSelected="hard" handleLevel={handleLevel} />
-          <ButtonSelector levelSelected="impossible" handleLevel={handleLevel} />
+          <ButtonSelector
+            levelSelected="impossible"
+            handleLevel={handleLevel}
+          />
         </div>
       </section>
     </>
