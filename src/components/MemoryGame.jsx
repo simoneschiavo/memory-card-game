@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function MemoryGame({ level }) {
   const [images, setImages] = useState([]);
@@ -23,8 +24,11 @@ export default function MemoryGame({ level }) {
           `https://dog.ceo/api/breeds/image/random/${numberOfImages}`
         );
         const data = await response.json();
-        const dogImages = data.message;
-        setImages(dogImages);
+        const dogImagesWithIds = data.message.map((url) => ({
+          id: uuidv4(),
+          url,
+        }));
+        setImages(dogImagesWithIds);
       } catch (err) {
         setError(err.message);
       }
@@ -36,7 +40,7 @@ export default function MemoryGame({ level }) {
   return (
     <>
       {images.map((image) => (
-        <img src={image}  />
+        <img key={image.id} src={image.url} />
       ))}
     </>
   );
