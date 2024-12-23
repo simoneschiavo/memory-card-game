@@ -5,30 +5,32 @@ export default function MemoryGame({ level, increaseScore, handleIsOver }) {
   const [images, setImages] = useState([]);
   const [error, setError] = useState(null);
 
+  const doggoKey =
+    "live_17jblJFV37twFNXZmM4VqKauHrgM9uN6XWeFCF7XDjWya9KtWFJFvSVbxALG9gYQ";
   let numberOfImages = 6;
 
-  useEffect(() => {
-    if (level === "easy") {
-      numberOfImages = 6;
-    } else if (level === "medium") {
-      numberOfImages = 12;
-    } else if (level === "hard") {
-      numberOfImages = 24;
-    } else {
-      numberOfImages = 48;
-    }
+  if (level === "easy") {
+    numberOfImages = 6;
+  } else if (level === "medium") {
+    numberOfImages = 12;
+  } else if (level === "hard") {
+    numberOfImages = 24;
+  } else {
+    numberOfImages = 48;
+  }
 
+  useEffect(() => {
     const fetchImages = async () => {
       try {
         const response = await fetch(
-          `https://dog.ceo/api/breeds/image/random/${numberOfImages}`
+          `https://api.thedogapi.com/v1/images/search?limit=${numberOfImages}&api_key=${doggoKey}`
         );
         const data = await response.json();
-        const dogImagesWithIds = data.message.map((url) => ({
-          id: uuidv4(),
-          url,
+        const formattedImages = data.map((item) => ({
+          id: item.id,
+          url: item.url,
         }));
-        setImages(dogImagesWithIds);
+        setImages(formattedImages);
       } catch (err) {
         setError(err.message);
       }
