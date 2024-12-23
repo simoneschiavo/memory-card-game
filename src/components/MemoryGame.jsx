@@ -4,10 +4,9 @@ import { v4 as uuidv4 } from "uuid";
 export default function MemoryGame({ level }) {
   const [images, setImages] = useState([]);
   const [error, setError] = useState(null);
+  let numberOfImages = 6;
 
   useEffect(() => {
-    let numberOfImages;
-
     if (level === "easy") {
       numberOfImages = 6;
     } else if (level === "medium") {
@@ -39,9 +38,16 @@ export default function MemoryGame({ level }) {
 
   return (
     <>
-      {images.map((image) => (
-        <img key={image.id} src={image.url} />
-      ))}
+      {error && <p>Error: {error}</p>}
+      {images.length === numberOfImages ? (
+        images.map((image) => (
+          <button key={image.id} className="card">
+            <img src={image.url} />
+          </button>
+        ))
+      ) : (
+        <p>Loading...</p>
+      )}
     </>
   );
 }
