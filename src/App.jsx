@@ -1,5 +1,7 @@
+import React from "react";
 import { useState } from "react";
 import "./App.css";
+import ButtonSelector from "./components/ButtonSelector";
 
 function App() {
   const [level, setLevel] = useState(null);
@@ -7,6 +9,7 @@ function App() {
 
   const handleLevel = (e) => {
     setLevel(e.target.value.toLowerCase());
+    setIsOpen(false);
   };
 
   return (
@@ -14,10 +17,10 @@ function App() {
       <section>
         <h1>Which level do you want to choose?</h1>
         <div className="row-container levels">
-          <button className="easy">Easy</button>
-          <button className="medium">Medium</button>
-          <button className="hard">Hard</button>
-          <button className="impossible">Impossible</button>
+          <ButtonSelector levelSelected="easy" handleLevel={handleLevel} />
+          <ButtonSelector levelSelected="medium" handleLevel={handleLevel} />
+          <ButtonSelector levelSelected="hard" handleLevel={handleLevel} />
+          <ButtonSelector levelSelected="impossible" handleLevel={handleLevel} />
         </div>
       </section>
     </>
