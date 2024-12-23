@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/Header";
 import ButtonSelector from "./components/ButtonSelector";
 import MemoryGame from "./components/MemoryGame";
+import NewGame from "./components/NewGame";
 
 function App() {
   const [level, setLevel] = useState(null);
@@ -32,13 +33,13 @@ function App() {
   };
 
   const handleIsOver = () => {
-    setIsOver(true);
+    setIsOver((prevIsOver) => !prevIsOver);
   };
 
   return (
     <>
       <Header score={score} record={record} />
-      <section className={(isOpen || isOver) ? "level-selector" : "level-selector close"}>
+      <section className={isOpen ? "level-selector" : "level-selector close"}>
         <h2>Which level do you want to choose?</h2>
         <div className="row-container levels">
           <ButtonSelector levelSelected="easy" handleLevel={handleLevel} />
@@ -50,8 +51,22 @@ function App() {
           />
         </div>
       </section>
-      {level && <MemoryGame level={level} increaseScore={increaseScore} handleIsOver={handleIsOver} />}
-      {isOver && <NewGame />}
+      {level && !isOver && (
+        <MemoryGame
+          level={level}
+          increaseScore={increaseScore}
+          handleIsOver={handleIsOver}
+        />
+      )}
+      {isOver && (
+        <NewGame
+          score={score}
+          record={record}
+          handleRecord={handleRecord}
+          resetScore={resetScore}
+          handleIsOver={handleIsOver}
+        />
+      )}
     </>
   );
 }
