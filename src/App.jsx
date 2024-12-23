@@ -38,7 +38,7 @@ function App() {
   return (
     <>
       <Header score={score} record={record} />
-      <section className={isOpen ? "level-selector" : "level-selector close"}>
+      <section className={(isOpen || isOver) ? "level-selector" : "level-selector close"}>
         <h2>Which level do you want to choose?</h2>
         <div className="row-container levels">
           <ButtonSelector levelSelected="easy" handleLevel={handleLevel} />
@@ -51,6 +51,7 @@ function App() {
         </div>
       </section>
       {level && <MemoryGame level={level} increaseScore={increaseScore} handleIsOver={handleIsOver} />}
+      {isOver && <NewGame />}
     </>
   );
 }
