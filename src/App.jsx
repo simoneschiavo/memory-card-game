@@ -45,7 +45,7 @@ function App() {
           />
         </div>
       </section>
-      {level && <MemoryGame />}
+      {level && <MemoryGame level={level} />}
     </>
   );
 }
