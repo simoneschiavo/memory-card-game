@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "./App.css";
+import Header from "./components/Header";
 import ButtonSelector from "./components/ButtonSelector";
 
 function App() {
@@ -31,14 +32,11 @@ function App() {
   return (
     <>
       <Header
-        increaseScore={increaseScore}
-        resetScore={resetScore}
-        handleRecord={handleRecord}
         score={score}
         record={record}
       />
       <section className={isOpen ? "level-selector" : "level-selector close"}>
-        <h1>Which level do you want to choose?</h1>
+        <h2>Which level do you want to choose?</h2>
         <div className="row-container levels">
           <ButtonSelector levelSelected="easy" handleLevel={handleLevel} />
           <ButtonSelector levelSelected="medium" handleLevel={handleLevel} />
