@@ -31,11 +31,13 @@
 /* General */
 button {
   transition: all 500ms ease;
+  color: var(--black);
 }
 
 button:hover {
   cursor: pointer;
   transition: all 500ms ease;
+  color: var(--black);
 }
 
 /* Header */
