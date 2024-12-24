@@ -86,6 +86,7 @@ button:hover {
 .section-title {
   font-size: 2.5rem;
   font-weight: bold;
+  text-align: center;
 }
 
 .levels {
@@ -237,4 +238,83 @@ section .scores-container {
   background-color: var(--light-black);
   border: 1px solid var(--black);
   color: #fff;
+}
+
+@media (min-width: 751px) and (max-width: 850px) {
+  :root {
+    --xl-gap: 3rem;
+  }
+
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .card {
+    height: 200px;
+  }
+}
+
+@media (max-width: 750px) {
+  :root {
+    --xl-gap: 2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .levels {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .card {
+    height: 150px;
+    padding: 0.5rem
+  }
+
+  section .scores-container {
+    font-size: 1.25rem;
+  }
+
+  .buttons-container {
+    flex-direction: column-reverse;
+    margin-top: var(--m-gap);
+  }
+
+  .change-level-button {
+    padding: var(--s-gap);
+    background-color: transparent;
+    border: none;
+    color: var(--black);
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 520px) {
+  :root {
+    --xl-gap: 2rem;
+  }
+
+  .navbar {
+    justify-content: center;
+  }
+
+  .navbar .scores-container {
+    display: none;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 379px) {
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
 }
