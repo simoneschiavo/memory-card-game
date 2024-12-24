@@ -75,7 +75,7 @@ export default function MemoryGame({ level, increaseScore, handleIsOver }) {
       ) : (
         <section className="loading-state">
           <PawPrint className="paw-print" size={48} />
-          <p>Loading...</p>
+          <p>Whoof! Whoof! Loading...</p>
         </section>
       )}
     </section>
